@@ -7,9 +7,12 @@ arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('zlib' 'openssl' 'bash' 'ca-certificates' 'libssh2' 'libpsl')
+conflicts=('libcurl-compat')
+provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
 md5sums=('dd014df06ff1d12e173de86873f9f77a')
+
 build() {
     cd ${_pkgname}-${pkgver}
     ./configure \
@@ -26,6 +29,7 @@ build() {
         --enable-threaded-resolver
     make
 }
+
 package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}
     mkdir -p ${pkgdir}/opt/${_pkgname}/share/{licenses/${_pkgname},aclocal}
