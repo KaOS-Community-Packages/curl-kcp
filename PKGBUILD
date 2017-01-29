@@ -30,7 +30,7 @@ package() {
     install -dm755 ${pkgdir}/opt/${_pkgname}
     mkdir -p ${pkgdir}/opt/${_pkgname}/share/{licenses/${_pkgname},aclocal}
     cd ${_pkgname}-${pkgver}
-    make DESTDIR=${pkgdir}/opt/${_pkgname} install
+    make DESTDIR=${pkgdir} install
     install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
     install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
