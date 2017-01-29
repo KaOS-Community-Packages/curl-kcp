@@ -7,21 +7,14 @@ arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('zlib' 'openssl' 'bash' 'ca-certificates' 'libssh2' 'libpsl')
-provides=('curl' 'libcurl-compat')
-conflicts=('curl' 'libcurl-compat')
 options=('!libtool')
-source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2"
-        'curlbuild.h')
-md5sums=('dd014df06ff1d12e173de86873f9f77a'
-         '751bd433ede935c8fae727377625a8ae')
-
+source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('dd014df06ff1d12e173de86873f9f77a')
 build() {
     cd ${_pkgname}-${pkgver}
-
     ./configure \
+        --prefix=/opt/{_pkgname} \
         --with-random=/dev/urandom \
-        --prefix=/usr \
-        --mandir=/usr/share/man \
         --enable-ipv6 \
         --disable-ldaps \
         --disable-ldap \
@@ -33,14 +26,11 @@ build() {
         --enable-threaded-resolver
     make
 }
-
 package() {
+    install -dm755 ${pkgdir}/opt/{_pkgname}
+    mkdir -p ${pkgdir}/opt/{_pkgname}/share/{licenses/${_pkgname},aclocal}
     cd ${_pkgname}-${pkgver}
-    make DESTDIR=${pkgdir} install
-    
-    install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${_pkgname}/COPYING
-    install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/usr/share/aclocal/libcurl.m4
-    
-    mv ${pkgdir}/usr/include/curl/curlbuild.h ${pkgdir}/usr/include/curl/curlbuild-64.h
-    install -m 644 ${srcdir}/curlbuild.h ${pkgdir}/usr/include/curl/curlbuild.h
+    make DESTDIR=${pkgdir}/opt/{_pkgname} install
+    install -Dm644 COPYING ${pkgdir}/opt/{_pkgname}/share/licenses/${_pkgname}/COPYING
+    install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/{_pkgname}/share/aclocal/libcurl.m4
 }
