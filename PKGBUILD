@@ -13,7 +13,7 @@ md5sums=('dd014df06ff1d12e173de86873f9f77a')
 build() {
     cd ${_pkgname}-${pkgver}
     ./configure \
-        --prefix=/opt/{_pkgname} \
+        --prefix=/opt/${_pkgname} \
         --with-random=/dev/urandom \
         --enable-ipv6 \
         --disable-ldaps \
@@ -27,10 +27,10 @@ build() {
     make
 }
 package() {
-    install -dm755 ${pkgdir}/opt/{_pkgname}
-    mkdir -p ${pkgdir}/opt/{_pkgname}/share/{licenses/${_pkgname},aclocal}
+    install -dm755 ${pkgdir}/opt/${_pkgname}
+    mkdir -p ${pkgdir}/opt/${_pkgname}/share/{licenses/${_pkgname},aclocal}
     cd ${_pkgname}-${pkgver}
-    make DESTDIR=${pkgdir}/opt/{_pkgname} install
-    install -Dm644 COPYING ${pkgdir}/opt/{_pkgname}/share/licenses/${_pkgname}/COPYING
-    install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/{_pkgname}/share/aclocal/libcurl.m4
+    make DESTDIR=${pkgdir}/opt/${_pkgname} install
+    install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
+    install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
