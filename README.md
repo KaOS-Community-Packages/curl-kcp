@@ -6,5 +6,9 @@ An URL retrieval library
 kcp -di curl-kcp
 ```
 
-This package is required by spotify (also avaliable at kcp),
-so make sure to install curl-kcp before install spotify
+### Required by 
+* Spotify
+* Gitkraken
+
+They're avaliable at kcp, so make sure to install curl-kcp
+before installing one of this apps
