@@ -36,7 +36,7 @@ package() {
     cd ${_pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
 
-    cp ${pkgdir}/opt/${_pkgname}/lib/libcurl.so ${pkgdir}/usr/lib/libcurl-gnutls.so.4
+    cp ${pkgdir}/opt/${_pkgname}/lib/libcurl.so ${pkgdir}/usr/lib/libcurl.so
     install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
     install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
