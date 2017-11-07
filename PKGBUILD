@@ -1,7 +1,7 @@
 pkgname=curl-kcp
 _pkgname=curl
-pkgver=7.56.0
-pkgrel=4
+pkgver=7.56.1
+pkgrel=1
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
 url="https://curl.haxx.se"
