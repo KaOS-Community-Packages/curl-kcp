@@ -11,7 +11,7 @@ conflicts=('libcurl-compat')
 provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('e0caf257103e0c77cee5be7e9ac66ca4')
+md5sums=('428de25834ef8c04076906d6d5c0498e')
 
 build() {
     cd ${_pkgname}-${pkgver}
