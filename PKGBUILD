@@ -8,7 +8,7 @@ url="https://curl.haxx.se"
 license=('MIT')
 depends=('zlib' 'openssl' 'bash' 'ca-certificates' 'libssh2' 'libpsl')
 conflicts=('libcurl-compat')
-    provides=('libcurl-compat')
+provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
 md5sums=('7adf426f80c68bbdd04d44b9bc171d61')
@@ -25,18 +25,14 @@ build() {
         --disable-versioned-symbols \
         --enable-threaded-resolver \
         --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-        --without-libidn \
-        --enable-threaded-resolver
+        --without-libidn
     make
 }
 
 package() {
-    install -dm755 ${pkgdir}/opt/${_pkgname} ${pkgdir}/usr/lib
-    mkdir -p ${pkgdir}/opt/${_pkgname}/share/{licenses/${_pkgname},aclocal}
     cd ${_pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
-
-    cp ${pkgdir}/opt/${_pkgname}/lib/libcurl.so ${pkgdir}/usr/lib/libcurl-gnutls.so.4
+    ln -s libcurl.so.4.5.0 ${pkgdir}/opt/${_pkgname}/lib/libcurl-gnutls.so.4
     install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
     install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
