@@ -25,7 +25,7 @@ build() {
         --disable-versioned-symbols \
         --enable-threaded-resolver \
         --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-        --without-libidn \
+        --without-libidn
     make
 }
 
