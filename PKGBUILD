@@ -1,7 +1,7 @@
 pkgname=curl-kcp
 _pkgname=curl
 pkgver=7.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
 url="https://curl.haxx.se"
@@ -26,7 +26,6 @@ build() {
         --enable-threaded-resolver \
         --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
         --without-libidn \
-        --enable-threaded-resolver
     make
 }
 
