@@ -1,7 +1,7 @@
 pkgname=curl-kcp
 _pkgname=curl
 pkgver=7.63.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
 url="https://curl.haxx.se"
@@ -31,6 +31,7 @@ build() {
 
 package() {
     cd ${_pkgname}-${pkgver}
+    install -dm755 ${pkgdir}/usr/lib
     make DESTDIR=${pkgdir} install
 
     ln -s /opt/${_pkgname}/lib/libcurl.so.4.5.0 ${pkgdir}/usr/lib/libcurl-gnutls.so.4
