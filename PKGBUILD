@@ -1,6 +1,6 @@
 pkgname=curl-kcp
 _pkgname=curl
-pkgver=7.67.0
+pkgver=7.68.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
@@ -11,14 +11,13 @@ conflicts=('libcurl-compat')
 provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('7be288f6fd5b7b5e402ef3b36a461a24')
+md5sums=('40d6784bd1a86e079d63cc668ba9bd8f')
 
 build() {
     cd ${_pkgname}-${pkgver}
     ./configure \
         --prefix="/opt/${_pkgname}" \
         --with-random=/dev/urandom \
-        --enable-ipv6 \
         --disable-ldaps \
         --disable-ldap \
         --enable-manual \
