@@ -31,7 +31,7 @@ build() {
 package() {
     cd ${_pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
-    ln -s libcurl.so.4.6.0 ${pkgdir}/opt/${_pkgname}/lib/libcurl-gnutls.so.4
+    ln -s libcurl.so.4.7.0 ${pkgdir}/opt/${_pkgname}/lib/libcurl-gnutls.so.4
     install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
     install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
