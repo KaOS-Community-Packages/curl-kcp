@@ -1,6 +1,6 @@
 pkgname=curl-kcp
 _pkgname=curl
-pkgver=7.87.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('libcurl-compat')
 provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('f31433df52c5dba5359a6bd171423d14')
+md5sums=('b2e694208b4891d7396d118712148ff3')
 
 build() {
     cd ${_pkgname}-${pkgver}
@@ -32,7 +32,7 @@ build() {
 package() {
     cd ${_pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
-    ln -s libcurl.so.4.7.0 ${pkgdir}/opt/${_pkgname}/lib/libcurl-gnutls.so.4
+    ln -s libcurl.so.4 ${pkgdir}/opt/${_pkgname}/lib/libcurl-gnutls.so.4
     install -Dm644 COPYING ${pkgdir}/opt/${_pkgname}/share/licenses/${_pkgname}/COPYING
     install -Dm644 docs/libcurl/libcurl.m4 ${pkgdir}/opt/${_pkgname}/share/aclocal/libcurl.m4
 }
