@@ -1,6 +1,6 @@
 pkgname=curl-kcp
 _pkgname=curl
-pkgver=8.2.1
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('libcurl-compat')
 provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('bd3515ebe088668e0d1215df739190bd')
+md5sums=('d6d62938ae89add211d07c4f8d3a8748')
 
 build() {
     cd ${_pkgname}-${pkgver}
