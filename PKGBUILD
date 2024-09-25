@@ -1,6 +1,6 @@
 pkgname=curl-kcp
 _pkgname=curl
-pkgver=8.9.1
+pkgver=8.10.1
 pkgrel=1
 pkgdesc="An URL retrival utility and library"
 arch=('x86_64')
@@ -11,21 +11,19 @@ conflicts=('libcurl-compat')
 provides=('libcurl-compat')
 options=('!libtool')
 source=("https://curl.haxx.se/download/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('8feb255a16590f2465926d7627f86583')
+md5sums=('434f0dc1c5cc7a0486fa2461a1f1928f')
 
 build() {
     cd ${_pkgname}-${pkgver}
     ./configure \
         --prefix="/opt/${_pkgname}" \
-        --with-random=/dev/urandom \
         --disable-ldaps \
         --disable-ldap \
         --enable-manual \
         --disable-versioned-symbols \
         --enable-threaded-resolver \
         --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
-        --with-gnutls \
-        --without-libidn
+        --with-gnutls
     make
 }
 
